@@ -2,7 +2,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy import Integer, String, Column, create_engine, Float
 import os
 SQLURL = os.getenv("SQLURL", "postgresql://postgres:postgres@db:5432/postgres")
-##SQLURL = "postgresql://postgres:postgres@127.0.0.1:5432/postgres?client_encoding=utf8"
+# SQLURL = "postgresql://postgres:postgres@127.0.0.1:5432/postgres?client_encoding=utf8"
 engine = create_engine(SQLURL)
 Session = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 Base = declarative_base()
