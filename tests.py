@@ -1,11 +1,11 @@
-from starlette.testclient import TestClient
+from fastapi.testclient import TestClient
 import main
-
+import pytest
 app = main.app
 client = TestClient(app)
 
 def test_interaction():
-    uuid = "1"
+    uuid = '1s'
     response = client.post(f"/api/v1/wallets/{uuid}/operation", params={"balance": 45.0, "operation": "DEPOSIT"})
     assert response.status_code == 200
     response_wdraw = client.post(f"/api/v1/wallets/{uuid}/operation", params={"balance": 3.84, "operation": "WITHDRAW"})
@@ -14,7 +14,7 @@ def test_interaction():
     assert response_get.status_code == 200
 
 def test_get_new_wallet():
-    uuid = "2"
+    uuid = "2f"
     response = client.get(f"/api/v1/wallets/{uuid}")
     assert response.status_code == 200
     data = response.json()
